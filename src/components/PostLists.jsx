@@ -1,6 +1,6 @@
 import { useDeletePost, usePost } from "../hooks/useProduct";
 
-const PostLists = () => {
+const PostLists = ({ onEdit }) => {
   const { data: posts, error, isLoading } = usePost();
   const mutation = useDeletePost();
 
@@ -17,7 +17,10 @@ const PostLists = () => {
           >
             <h2 className="text-xl font-semibold">{post.title}</h2>
             <p>{post.content}</p>
-            <button className="bg-green-500 cursor-pointer px-4 py-1  rounded-2xl text-white">
+            <button
+              onClick={() => onEdit(post)}
+              className="bg-green-500 cursor-pointer px-4 py-1  rounded-2xl text-white"
+            >
               Edit
             </button>
             <button
